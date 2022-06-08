@@ -28,19 +28,19 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <DockPanel Grid.Column="1" Grid.Row="1">
-                <Border Width="Auto" Height="Auto" CornerRadius="15" BorderBrush="#324451" BorderThickness="5" Margin="0, 0, 10, 0">
+            <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                <Border Width="400" Height="Auto" CornerRadius="15" BorderBrush="#324451" BorderThickness="5" Margin="0, 0, 10, 0">
                     <Grid Background="Transparent">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="130"/>
                             <ColumnDefinition Width="130"/>
-                            <ColumnDefinition Width="140"/>
+                            <ColumnDefinition Width="130"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="50"/>
                             <RowDefinition Height="20"/>
                             <RowDefinition Height="50"/>
                             <RowDefinition Height="60"/>
@@ -49,39 +49,40 @@
                             <RowDefinition Height="60"/>
                             <RowDefinition Height="20"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="20"/>
                         </Grid.RowDefinitions>
 
                         <!-- Podawana zawartość rejestrów -->
-                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Margin="20 10" FontSize="20" Text="Podaj zawartość rejestrów:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Text="Rejestry arytmetyczne:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
                         <TextBlock Grid.Column="0" Grid.Row="2" Text="Reg" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBlock Grid.Column="1" Grid.Row="2" Text="High" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBlock Grid.Column="2" Grid.Row="2" Text="Low" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="3" Text="A" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="0" Grid.Row="3" Text="AX" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBox x:Name="AH" Grid.Column="1" Grid.Row="3" MaxLength="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="35" Height="35" Margin="10"/>
                         <TextBox x:Name="AL" Grid.Column="2" Grid.Row="3" Text="" MaxLength="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="35" Height="35" Margin="10"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="4" Text="B" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="0" Grid.Row="4" Text="BX" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBox x:Name="BH" Grid.Column="1" Grid.Row="4" Text="" MaxLength="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="35" Height="35" Margin="10"/>
                         <TextBox x:Name="BL" Grid.Column="2" Grid.Row="4" Text="" MaxLength="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="35" Height="35" Margin="10"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="5" Text="C" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="0" Grid.Row="5" Text="CX" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBox x:Name="CH" Grid.Column="1" Grid.Row="5" Text="" MaxLength="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="35" Height="35" Margin="10"/>
                         <TextBox x:Name="CL" Grid.Column="2" Grid.Row="5" Text="" MaxLength="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="35" Height="35" Margin="10"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="6" Text="D" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="0" Grid.Row="6" Text="DX" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBox x:Name="DH" Grid.Column="1" Grid.Row="6" Text="" MaxLength="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="35" Height="35" Margin="10"/>
                         <TextBox x:Name="DL" Grid.Column="2" Grid.Row="6" Text="" MaxLength="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="35" Height="35" Margin="10"/>
 
-                        <StackPanel Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-                            <Button x:Name="RANDOM" Content="Random"  Width="90" Height="35" Margin="0,15,20,15" FontSize="18"/>
-                            <Button x:Name="MOVALL" Content="Mov"  Width="90" Height="35" Margin="15" FontSize="18"/>
-                            <Button x:Name="CLEAR" Content="Clear"  Width="90" Height="35" Margin="20,15,0,15" FontSize="18"/>
+                        <StackPanel Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <Button x:Name="RANDOM" Click="RandomOperation" Content="Random"  Width="90" Height="40" BorderThickness="0" Margin="5"/>
+                            <Button x:Name="MOVALL" Click="MovAllOperation" Content="Mov All"  Width="90" Height="40" BorderThickness="0" Margin="5"/>
+                            <Button x:Name="CLEAR" Click="ClearOperation" Content="Clear"  Width="90" Height="40" BorderThickness="0" Margin="5"/>
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Border Grid.Column="1" Grid.Row="1" Width="Auto" Height="Auto" CornerRadius="15" BorderBrush="#324451" BorderThickness="5" Margin="10, 0, 10, 0">
+                <Border Width="700" Height="Auto" CornerRadius="15" BorderBrush="#324451" BorderThickness="5" Margin="10, 0, 10, 0">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -108,12 +109,16 @@
                         </ComboBox>
 
                         <TextBlock Grid.Column="0" Grid.Row="4" Text="Wybierz operacje:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <WrapPanel Grid.Column="0" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20, 0, 20, 0">
-                            <Button x:Name="INC" Content="INC" Click="INC_Operation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                            <Button x:Name="DEC" Content="DEC" Click="DEC_Operation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                            <Button x:Name="NOT" Content="NOT" Click="NOT_Operation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                            <Button x:Name="NEG" Content="NEG" Click="NEG_Operation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                        </WrapPanel>
+                        <StackPanel Grid.Column="0" Grid.Row="6" VerticalAlignment="Top">
+                            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20, 0, 20, 0">
+                                <Button x:Name="INC" Content="INC" Click="IncOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button x:Name="DEC" Content="DEC" Click="DecOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                            </WrapPanel>
+                            <WrapPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="20, 0, 20, 0">
+                                <Button x:Name="NOT" Content="NOT" Click="NotOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button x:Name="NEG" Content="NEG" Click="NegOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                            </WrapPanel>
+                        </StackPanel>
 
                         <!-- <GridSplitter Grid.Column="1" Grid.Row="3" Grid.RowSpan="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="8"> -->
                         <!--     <GridSplitter.Template> -->
@@ -136,6 +141,7 @@
                                     </DataTemplate>
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">&lt;&lt;</TextBlock>
                             <ComboBox x:Name="secondRegisterList" Width="80" Height="35" Margin="10, 0, 10, 0">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate>
@@ -146,29 +152,29 @@
                         </StackPanel>
 
                         <TextBlock Grid.Column="1" Grid.Row="4" Text="Wybierz operacje:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                        <StackPanel Grid.Column="1" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <StackPanel Grid.Column="1" Grid.Row="6" HorizontalAlignment="Center" VerticalAlignment="Top">
                             <WrapPanel HorizontalAlignment="Center">
-                                <Button x:Name="MOV" Content="MOV" Click="MOV_Operation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button x:Name="XCHG" Content="XCHG" Click="XCHG_Operation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button x:Name="MOV" Content="MOV" Click="MovOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button x:Name="XCHG" Content="XCHG" Click="XchgOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                             </WrapPanel>
                             <WrapPanel>
-                                <Button x:Name="AND" Content="AND" Click="AND_Operation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button x:Name="OR" Content="OR" Click="OR_Operation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button x:Name="XOR" Content="XOR" Click="XOR_Operation" Width="55" Height="35" Margin="20, 10, 20, 10" HorizontalAlignment="Center"/>
+                                <Button x:Name="AND" Content="AND" Click="AndOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button x:Name="OR" Content="OR" Click="OrOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button x:Name="XOR" Content="XOR" Click="XorOperation" Width="55" Height="35" Margin="20, 10, 20, 10" HorizontalAlignment="Center"/>
                             </WrapPanel>
                             <WrapPanel HorizontalAlignment="Center">
-                                <Button x:Name="ADD" Content="ADD" Click="ADD_Operation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
-                                <Button x:Name="SUB" Content="SUB" Click="SUB_Operation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button x:Name="ADD" Content="ADD" Click="AddOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
+                                <Button x:Name="SUB" Content="SUB" Click="SubOperation" Width="55" Height="35" Margin="20, 10, 20, 10"/>
                             </WrapPanel>
                         </StackPanel>
                     </Grid>
                 </Border>
-                <Border Grid.Column="1" Grid.Row="1" MinWidth="160" MaxWidth="360" Width="Auto" Height="Auto" CornerRadius="15" BorderBrush="#324451" BorderThickness="5" Margin="10, 0, 0, 0">
+                <Border Width="330" Height="Auto" CornerRadius="15" BorderBrush="#324451" BorderThickness="5" Margin="10, 0, 0, 0">
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="110"/>
+                            <ColumnDefinition Width="110"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="50"/>
@@ -186,42 +192,187 @@
                         <TextBlock Grid.Column="1" Grid.Row="2" Text="High" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBlock Grid.Column="2" Grid.Row="2" Text="Low" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="3" Text="A" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="0" Grid.Row="3" Text="AX" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBlock x:Name="resultAH" Grid.Column="1" Grid.Row="3" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <TextBlock x:Name="resultAL" Grid.Column="2" Grid.Row="3" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="4" Text="B" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="0" Grid.Row="4" Text="BX" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBlock x:Name="resultBH" Grid.Column="1" Grid.Row="4" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <TextBlock x:Name="resultBL" Grid.Column="2" Grid.Row="4" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="5" Text="C" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="0" Grid.Row="5" Text="CX" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBlock x:Name="resultCH" Grid.Column="1" Grid.Row="5" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <TextBlock x:Name="resultCL" Grid.Column="2" Grid.Row="5" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-                        <TextBlock Grid.Column="0" Grid.Row="6" Text="D" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
+                        <TextBlock Grid.Column="0" Grid.Row="6" Text="DX" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/>
                         <TextBlock x:Name="resultDH" Grid.Column="1" Grid.Row="6" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <TextBlock x:Name="resultDL" Grid.Column="2" Grid.Row="6" Text="00" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Grid>
                 </Border>
-            </DockPanel>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal">
+                <Border Width="400" Height="Auto" CornerRadius="15" BorderBrush="#324451" BorderThickness="5" Margin="0, 0, 10, 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Text="Rejestry wskaźnikowe i indeksowe:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="SI" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" Grid.Row="2" Width="80" Height="35" MaxLength="4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="AliceBlue"/>
+                        <TextBlock Grid.Column="0" Grid.Row="3" Text="DI" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" Grid.Row="3" Width="80" Height="35" MaxLength="4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="AliceBlue"/>
+                        <TextBlock Grid.Column="0" Grid.Row="4" Text="BP" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" Grid.Row="4" Width="80" Height="35" MaxLength="4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="AliceBlue"/>
+                        <TextBlock Grid.Column="0" Grid.Row="5" Text="DISP" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" Grid.Row="5" Width="80" Height="35" MaxLength="4" HorizontalAlignment="Center" VerticalAlignment="Center" Background="AliceBlue"/>
+
+                    </Grid>
+                </Border>
+                <Border Width="700" Height="Auto" CornerRadius="15" BorderBrush="#324451" BorderThickness="5" Margin="10, 0, 10, 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                         <!-- Adresowanie bezpośrednie -->
+                        <TextBlock Grid.Column="0" Grid.Row="0" Text="Adresowanie bezpośrednie:" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="0" Grid.Row="2" Text="Adres pamięci:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Grid.Row="2" Text="Wartość:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <ComboBox Grid.Column="0" Grid.Row="3" Width="80" Height="35">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="singleRegister" Text="{Binding Name}"/>
+                                 </DataTemplate>
+                             </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBox Grid.Column="1" Grid.Row="3" MaxLength="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="80" Height="35" Margin="10"/>
+                        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">&lt;&lt;</TextBlock>
+
+                        <ComboBox Grid.Column="1" Grid.Row="4" Width="80" Height="35">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="singleRegister" Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBox Grid.Column="0" Grid.Row="4" MaxLength="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="80" Height="35" Margin="10"/>
+                        <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center">&lt;&lt;</TextBlock>
+
+                        <!-- Adresowanie pośrednie -->
+                        <TextBlock Grid.Column="2" Grid.Row="0" Text="Adresowanie pośrednie:" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Grid.Row="2" Text="Adres pamięci:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <TextBlock Grid.Column="3" Grid.Row="2" Text="Wartość:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+                        <ComboBox Grid.Column="2" Grid.Row="3" Width="80" Height="35">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="singleRegister" Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBox Grid.Column="3" Grid.Row="3" MaxLength="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="80" Height="35" Margin="10"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">&lt;&lt;</TextBlock>
+
+                        <ComboBox Grid.Column="3" Grid.Row="4" Width="80" Height="35">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock x:Name="singleRegister" Text="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <TextBox Grid.Column="2" Grid.Row="4" MaxLength="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="80" Height="35" Margin="10"/>
+                        <TextBlock Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center">&lt;&lt;</TextBlock>
+
+                        <!-- Adresowanie indeksowe -->
+                        <TextBlock Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" Text="Adresowanie indeksowe:" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                        <RadioButton Grid.Column="0" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="True" GroupName="indeksowe">SI + DISP</RadioButton>
+                        <RadioButton Grid.Column="1" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" GroupName="indeksowe">DI + DISP</RadioButton>
+                         <StackPanel Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="2" Orientation="Horizontal">
+                            <TextBlock Text="Wpisz adres efektywny:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Background="AliceBlue" Width="80" Height="35" Margin="20, 0, 20, 0"/>
+                         </StackPanel>
+                        
+                         <!-- Adresowanie bazowe -->
+                         <TextBlock Grid.Column="0" Grid.Row="11" Grid.ColumnSpan="2" Text="Adresowanie bazowe:" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                         <RadioButton Grid.Column="0" Grid.Row="13" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="True" GroupName="bazowe">BX + DISP</RadioButton>
+                        <RadioButton Grid.Column="1" Grid.Row="13" HorizontalAlignment="Center" VerticalAlignment="Center" GroupName="bazowe">BP + DISP</RadioButton>
+                          <StackPanel Grid.Column="0" Grid.Row="14" Grid.ColumnSpan="2" Orientation="Horizontal">
+                             <TextBlock Text="Wpisz adres efektywny:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Background="AliceBlue" Width="80" Height="35" Margin="20, 0, 20, 0"/>
+                         </StackPanel>
+                        
+                         <!-- Adresowanie indeksowo-bazowe -->
+                         <TextBlock Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="2" Text="Adresowanie indeksowo-bazowe:" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+                         <RadioButton Grid.Column="2" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="True" GroupName="indeksowo-bazowe">SI + BP +DISP</RadioButton>
+                        <RadioButton Grid.Column="3" Grid.Row="8" HorizontalAlignment="Center" VerticalAlignment="Center" GroupName="indeksowo-bazowe">SI + BX + DISP</RadioButton>
+                        <RadioButton Grid.Column="2" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center" GroupName="indeksowo-bazowe">DI + BP + DISP</RadioButton>
+                        <RadioButton Grid.Column="3" Grid.Row="9" HorizontalAlignment="Center" VerticalAlignment="Center" GroupName="indeksowo-bazowe">DI + BX + DISP</RadioButton>
+                        <StackPanel Grid.Column="2" Grid.Row="10" Grid.ColumnSpan="2" Orientation="Horizontal">
+                             <TextBlock Text="Wpisz adres efektywny:" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                             <TextBox HorizontalAlignment="Center" VerticalAlignment="Center" Background="AliceBlue" Width="80" Height="35" Margin="20, 0, 20, 0"/>
+                         </StackPanel>
 
 
-
-            <!-- ~1~ Przerywnik @1@ -->
-            <!-- <Rectangle Grid.Column="12" Grid.Row="1" Grid.RowSpan="12" Fill="Teal" Margin="25 10 25 10"/> -->
-            <!-- -->
-            <!-- ~1~ Wyniki rejestrów @1@ -->
-
-
-            <!-- Przerywnik horyzontalnie -->
-            <!-- <Rectangle Grid.Column="1" Grid.Row="13" Grid.ColumnSpan="16" Fill="Teal" Margin="25 10 25 10" Height="10px"/> -->
-            <!-- <TextBlock Grid.Column="1" Grid.Row="17" Height="30px"/>-->
-            <!-- <TextBlock x:Name="memoryAdressText" Grid.Column="13" Grid.Row="18" Grid.ColumnSpan="2" Text="Memory Address" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold" Height="40"/> -->
-            <!-- <TextBox x:Name="memoryAdressName" Grid.Column="13" Grid.Row="19" Grid.ColumnSpan="1" MaxLength="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="70" Height="35" Margin="10"/> -->
-            <!-- <Button x:Name="checkMemory" Grid.Column="14" Grid.Row="19" Grid.ColumnSpan="1" Content=">>>" Click="checkMemoryAddress" Width="50" Height="25" Margin="15"/> -->
-            <!-- <TextBlock x:Name="memoryAdressValue" Grid.Column="15" Grid.Row="19" Grid.ColumnSpan="1" Text="" Background="AliceBlue" Width="70" Height="35" Margin="10"/> -->
-
-
+                    </Grid>
+                </Border>
+                <Border Width="Auto" Height="Auto" CornerRadius="15" BorderBrush="#324451" BorderThickness="5" Margin="10, 0, 10, 0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock x:Name="memoryAdressText" Grid.Column="0" Grid.Row="0" Text="Memory Address" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <TextBox x:Name="memoryAdressName" Grid.Column="0" Grid.Row="2" MaxLength="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="AliceBlue" Width="70" Height="35" Margin="10"/>
+                        <Button x:Name="checkMemory" Grid.Column="0" Grid.Row="3" Content=">>>" Click="CheckMemoryAddress" Width="50" Height="25" Margin="15"/>
+                        <TextBlock x:Name="memoryAdressValue" Grid.Column="0" Grid.Row="4" Text="00" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                </Border>
+            </StackPanel>
         </Grid>
     </DockPanel>
 </Window>

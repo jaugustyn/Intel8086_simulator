@@ -11,7 +11,7 @@ namespace Projekt_architektura
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Memory> MemoryAdresses = new();
+        public List<Memory> MemoryAddresses = new();
         public List<Register> Registers = new();
 
         public MainWindow()
@@ -21,24 +21,24 @@ namespace Projekt_architektura
             for (var i = 0; i < registerNames.Length; i++)
                 Registers.Add(new Register {Name = registerNames[i], Value = "00"});
 
-            // firstRegisterList.ItemsSource = Registers;
-            // secondRegisterList.ItemsSource = Registers;
-            // singleRegisterList.ItemsSource = Registers;
+            firstRegisterList.ItemsSource = Registers;
+            secondRegisterList.ItemsSource = Registers;
+            singleRegisterList.ItemsSource = Registers;
 
             for (var i = 0; i < 65536; i++) //65 536 => 64KB
-                MemoryAdresses.Add(new Memory {Name = i.ToString("X"), Value = "0000"});
+                MemoryAddresses.Add(new Memory {Name = i.ToString("X"), Value = "0000"});
         }
-        // public void checkMemoryAddress(object sender, RoutedEventArgs e)
-        // {
-        //     object input = memoryAdressName;
-        //     TextBlock inputChild = input as TextBlock;
-        //
-        //     Memory test = (Memory)memoryAdresses.Select(x => x.Name);
-        //     var test2 = from entry in memoryAdresses select entry.Name;
-        //     MessageBox.Show(test.Value);
-        //     memoryAdresses.First(l => l.Name == "nazwa");
-        //
-        // }
+        public void CheckMemoryAddress(object sender, RoutedEventArgs e)
+        {
+            object input = memoryAdressName;
+            TextBlock inputChild = input as TextBlock;
+        
+            Memory test = (Memory)MemoryAddresses.Select(x => x.Name);
+            var test2 = from entry in MemoryAddresses select entry.Name;
+            MessageBox.Show(test.Value);
+            MemoryAddresses.First(l => l.Name == "nazwa");
+        
+        }
 
         public class Register
         {

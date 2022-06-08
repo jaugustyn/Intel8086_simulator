@@ -10,7 +10,9 @@ namespace Projekt_architektura
 {
     public partial class MainWindow : Window
     {
-        private void MOV_Operation(object sender, RoutedEventArgs e)
+        #region Double registers operations
+        
+        private void MovOperation(object sender, RoutedEventArgs e)
         {
             var firstReg = (Register) firstRegisterList.SelectedItem;
             var secondReg = (Register) secondRegisterList.SelectedItem;
@@ -28,7 +30,7 @@ namespace Projekt_architektura
             }
         }
 
-        private void XCHG_Operation(object sender, RoutedEventArgs e)
+        private void XchgOperation(object sender, RoutedEventArgs e)
         {
             var firstReg = (Register) firstRegisterList.SelectedItem;
             var secondReg = (Register) secondRegisterList.SelectedItem;
@@ -54,7 +56,7 @@ namespace Projekt_architektura
         }
 
 
-        private void AND_Operation(object sender, RoutedEventArgs e)
+        private void AndOperation(object sender, RoutedEventArgs e)
         {
             var firstReg = (Register) firstRegisterList.SelectedItem;
             var secondReg = (Register) secondRegisterList.SelectedItem;
@@ -97,7 +99,7 @@ namespace Projekt_architektura
             }
         }
 
-        private void OR_Operation(object sender, RoutedEventArgs e)
+        private void OrOperation(object sender, RoutedEventArgs e)
         {
             var firstReg = (Register) firstRegisterList.SelectedItem;
             var secondReg = (Register) secondRegisterList.SelectedItem;
@@ -140,7 +142,7 @@ namespace Projekt_architektura
             }
         }
 
-        private void XOR_Operation(object sender, RoutedEventArgs e)
+        private void XorOperation(object sender, RoutedEventArgs e)
         {
             var firstReg = (Register) firstRegisterList.SelectedItem;
             var secondReg = (Register) secondRegisterList.SelectedItem;
@@ -185,7 +187,7 @@ namespace Projekt_architektura
             }
         }
 
-        private void ADD_Operation(object sender, RoutedEventArgs e)
+        private void AddOperation(object sender, RoutedEventArgs e)
         {
             var firstReg = (Register) firstRegisterList.SelectedItem;
             var secondReg = (Register) secondRegisterList.SelectedItem;
@@ -224,7 +226,7 @@ namespace Projekt_architektura
             }
         }
 
-        private void SUB_Operation(object sender, RoutedEventArgs e)
+        private void SubOperation(object sender, RoutedEventArgs e)
         {
             var firstReg = (Register) firstRegisterList.SelectedItem;
             var secondReg = (Register) secondRegisterList.SelectedItem;
@@ -262,7 +264,7 @@ namespace Projekt_architektura
         }
 
 
-        private void MOVALL_Operation(object sender, RoutedEventArgs e)
+        private void MovAllOperation(object sender, RoutedEventArgs e)
         {
             foreach (var reg in Registers)
             {
@@ -296,7 +298,7 @@ namespace Projekt_architektura
             }
         }
 
-        public void CLEAR_Operation(object sender, RoutedEventArgs e)
+        public void ClearOperation(object sender, RoutedEventArgs e)
         {
             foreach (var reg in Registers)
             {
@@ -309,7 +311,7 @@ namespace Projekt_architektura
             }
         }
 
-        public void RANDOM_Operation(object sender, RoutedEventArgs e)
+        public void RandomOperation(object sender, RoutedEventArgs e)
         {
             foreach (var reg in Registers)
             {
@@ -321,8 +323,12 @@ namespace Projekt_architektura
                 inputChild.Text = Register.RandomHexGenerator();
             }
         }
+        
+        #endregion
+        
+        #region Single Register operations
 
-        public void INC_Operation(object sender, RoutedEventArgs e)
+        public void IncOperation(object sender, RoutedEventArgs e) // increase
         {
             var singleReg = (Register) singleRegisterList.SelectedItem;
 
@@ -349,7 +355,7 @@ namespace Projekt_architektura
             }
         }
 
-        public void DEC_Operation(object sender, RoutedEventArgs e)
+        public void DecOperation(object sender, RoutedEventArgs e) //decrease
         {
             var singleReg = (Register) singleRegisterList.SelectedItem;
 
@@ -376,7 +382,7 @@ namespace Projekt_architektura
             }
         }
 
-        public void NOT_Operation(object sender, RoutedEventArgs e)
+        public void NotOperation(object sender, RoutedEventArgs e)
         {
             var singleReg = (Register) singleRegisterList.SelectedItem;
 
@@ -401,7 +407,7 @@ namespace Projekt_architektura
             }
         }
 
-        public void NEG_Operation(object sender, RoutedEventArgs e)
+        public void NegOperation(object sender, RoutedEventArgs e)
         {
             var singleReg = (Register) singleRegisterList.SelectedItem;
 
@@ -410,8 +416,8 @@ namespace Projekt_architektura
                 var input = FindName("result" + singleReg.Name);
                 var inputChild = input as TextBlock;
 
-                NOT_Operation(sender, e);
-                INC_Operation(sender, e);
+                NotOperation(sender, e);
+                IncOperation(sender, e);
 
                 if (singleReg.Value.Length == 1)
                 {
@@ -424,5 +430,6 @@ namespace Projekt_architektura
                 MessageBox.Show("Wybierz rejestr!");
             }
         }
+        #endregion
     }
 }
