@@ -17,53 +17,38 @@ namespace Projekt_architektura
         public MainWindow()
         {
             InitializeComponent();
-            var registerNames = new[] {"AH", "BH", "CH", "DH", "AL", "BL", "CL", "DL"};
-            for (var i = 0; i < registerNames.Length; i++)
-                Registers.Add(new Register {Name = registerNames[i], Value = "00"});
-
-            firstRegisterList.ItemsSource = Registers;
-            secondRegisterList.ItemsSource = Registers;
-            singleRegisterList.ItemsSource = Registers;
+            
+            var registerNames = new[] {"Ah", "Bh", "Ch", "Dh", "Al", "Bl", "Cl", "Dl"};
+            foreach (var reg in registerNames)
+                Registers.Add(new Register {Name = reg, Value = "00"});
 
             for (var i = 0; i < 65536; i++) //65 536 => 64KB
-                MemoryAddresses.Add(new Memory {Name = i.ToString("X"), Value = "0000"});
+                MemoryAddresses.Add(new Memory {Name = i.ToString("X"), Value = "00"});
+
+            OneRegisterOperationList.ItemsSource = Registers;
+            TwoRegistersOperationListFirst.ItemsSource = Registers;
+            TwoRegistersOperationListSecond.ItemsSource = Registers;
+            DirectAddressingToRegister.ItemsSource = Registers;
+            DirectAddressingFromRegister.ItemsSource = Registers;
         }
-        public void CheckMemoryAddress(object sender, RoutedEventArgs e)
+
+        public void MemoryAddressesWindow(object sender, RoutedEventArgs e)
         {
-            object input = memoryAdressName;
-            TextBlock inputChild = input as TextBlock;
-        
-            Memory test = (Memory)MemoryAddresses.Select(x => x.Name);
-            var test2 = from entry in MemoryAddresses select entry.Name;
-            MessageBox.Show(test.Value);
-            MemoryAddresses.First(l => l.Name == "nazwa");
-        
+            var cApp = (App)Application.Current;
+            cApp.MainWindow = new MemoryAddresses();
+            cApp.MainWindow.Show();
+            // this.Close();
         }
 
         public class Register
         {
-            public string Name { get; set; }
+            public string Name { get; init; }
             public string Value { get; set; }
-
-            public static bool HexValidator(string input)
-            {
-                for (var i = 0; i < input.Length; i++)
-                    if (!(input[i] >= '0' && input[i] <= '9' || input[i] >= 'A' && input[i] <= 'F'))
-                        return false;
-                return true;
-            }
-
-            public static string RandomHexGenerator()
-            {
-                const string chars = "0123456789ABCDEF";
-                var rand = new Random();
-                return new string(Enumerable.Repeat(chars, 2).Select(s => s[rand.Next(s.Length)]).ToArray());
-            }
         }
 
         public class Memory
         {
-            public string Name { get; set; }
+            public string Name { get; init; }
             public string Value { get; set; }
         }
     }
