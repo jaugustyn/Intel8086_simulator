@@ -17,27 +17,22 @@ namespace Projekt_architektura
         public MainWindow()
         {
             InitializeComponent();
-            
+
             var registerNames = new[] {"Ah", "Bh", "Ch", "Dh", "Al", "Bl", "Cl", "Dl"};
             foreach (var reg in registerNames)
                 Registers.Add(new Register {Name = reg, Value = "00"});
+            
 
             for (var i = 0; i < 65536; i++) //65 536 => 64KB
-                MemoryAddresses.Add(new Memory {Name = i.ToString("X"), Value = "00"});
+                MemoryAddresses.Add(new Memory {Name = i.ToString("X").PadLeft(4, '0'), Value = "00"});
 
             OneRegisterOperationList.ItemsSource = Registers;
             TwoRegistersOperationListFirst.ItemsSource = Registers;
             TwoRegistersOperationListSecond.ItemsSource = Registers;
             DirectAddressingToRegister.ItemsSource = Registers;
             DirectAddressingFromRegister.ItemsSource = Registers;
-        }
-
-        public void MemoryAddressesWindow(object sender, RoutedEventArgs e)
-        {
-            var cApp = (App)Application.Current;
-            cApp.MainWindow = new MemoryAddresses();
-            cApp.MainWindow.Show();
-            // this.Close();
+            BasedAddressingRegister.ItemsSource = Registers;
+            IndexBasedAddressingRegister.ItemsSource = Registers;
         }
 
         public class Register
